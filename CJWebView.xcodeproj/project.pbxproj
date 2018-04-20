@@ -13,6 +13,20 @@
 		A76A5E48200DA4D9001353BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E47200DA4D9001353BF /* Assets.xcassets */; };
 		A76A5E4B200DA4D9001353BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E49200DA4D9001353BF /* LaunchScreen.storyboard */; };
 		A76A5E4E200DA4D9001353BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E4D200DA4D9001353BF /* main.m */; };
+		A76A5E63200DDE31001353BF /* 编写高质量iOS代码的52个有效方法.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E62200DDE31001353BF /* 编写高质量iOS代码的52个有效方法.pdf */; };
+		A76A5E65200DE1B4001353BF /* 张小龙发布2018微信全新计划.txt in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E64200DE1B4001353BF /* 张小龙发布2018微信全新计划.txt */; };
+		A76A5E67200DE33D001353BF /* 考勤.doc in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E66200DE33D001353BF /* 考勤.doc */; };
+		A76A5E6A200DE36B001353BF /* UseWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E69200DE36B001353BF /* UseWebViewVC.m */; };
+		A76A5E71200E0C98001353BF /* WKVSJSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E70200E0C98001353BF /* WKVSJSViewController.m */; };
+		A76A5E75200EF1CB001353BF /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E74200EF1CB001353BF /* test.html */; };
+		A76A5E78200F5311001353BF /* CJHandlerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E77200F5311001353BF /* CJHandlerVC.m */; };
+		A76A5E7A20104DE5001353BF /* VideoTest.html in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E7920104DE5001353BF /* VideoTest.html */; };
+		A7DEE7E620746ED600B6D71B /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DEE7DE20746ED600B6D71B /* WebViewJavascriptBridgeBase.m */; };
+		A7DEE7E720746ED600B6D71B /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DEE7DF20746ED600B6D71B /* WKWebViewJavascriptBridge.m */; };
+		A7DEE7E820746ED600B6D71B /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DEE7E020746ED600B6D71B /* WebViewJavascriptBridge.m */; };
+		A7DEE7E920746ED600B6D71B /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DEE7E320746ED600B6D71B /* WebViewJavascriptBridge_JS.m */; };
+		A7DEE7EB2074772100B6D71B /* JavascriptBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = A7DEE7EA2074772000B6D71B /* JavascriptBridge.html */; };
+		A7DEE7EE20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7DEE7ED20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +40,28 @@
 		A76A5E4A200DA4D9001353BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A76A5E4C200DA4D9001353BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76A5E4D200DA4D9001353BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A76A5E62200DDE31001353BF /* 编写高质量iOS代码的52个有效方法.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "编写高质量iOS代码的52个有效方法.pdf"; sourceTree = "<group>"; };
+		A76A5E64200DE1B4001353BF /* 张小龙发布2018微信全新计划.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "张小龙发布2018微信全新计划.txt"; sourceTree = "<group>"; };
+		A76A5E66200DE33D001353BF /* 考勤.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "考勤.doc"; sourceTree = "<group>"; };
+		A76A5E68200DE36B001353BF /* UseWebViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UseWebViewVC.h; sourceTree = "<group>"; };
+		A76A5E69200DE36B001353BF /* UseWebViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UseWebViewVC.m; sourceTree = "<group>"; };
+		A76A5E6F200E0C98001353BF /* WKVSJSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKVSJSViewController.h; sourceTree = "<group>"; };
+		A76A5E70200E0C98001353BF /* WKVSJSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKVSJSViewController.m; sourceTree = "<group>"; };
+		A76A5E74200EF1CB001353BF /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		A76A5E76200F5311001353BF /* CJHandlerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJHandlerVC.h; sourceTree = "<group>"; };
+		A76A5E77200F5311001353BF /* CJHandlerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJHandlerVC.m; sourceTree = "<group>"; };
+		A76A5E7920104DE5001353BF /* VideoTest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = VideoTest.html; sourceTree = "<group>"; };
+		A7DEE7DE20746ED600B6D71B /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		A7DEE7DF20746ED600B6D71B /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		A7DEE7E020746ED600B6D71B /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		A7DEE7E120746ED600B6D71B /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		A7DEE7E220746ED600B6D71B /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		A7DEE7E320746ED600B6D71B /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		A7DEE7E420746ED600B6D71B /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		A7DEE7E520746ED600B6D71B /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		A7DEE7EA2074772000B6D71B /* JavascriptBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JavascriptBridge.html; sourceTree = "<group>"; };
+		A7DEE7EC20747BAA00B6D71B /* WebViewJavascriptBridgeTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeTest.h; sourceTree = "<group>"; };
+		A7DEE7ED20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +94,20 @@
 		A76A5E3D200DA4D9001353BF /* CJWebView */ = {
 			isa = PBXGroup;
 			children = (
+				A7DEE7DD20746ED600B6D71B /* WebViewJavascriptBridge */,
+				A76A5E61200DDD20001353BF /* res */,
 				A76A5E3E200DA4D9001353BF /* AppDelegate.h */,
 				A76A5E3F200DA4D9001353BF /* AppDelegate.m */,
 				A76A5E41200DA4D9001353BF /* ViewController.h */,
 				A76A5E42200DA4D9001353BF /* ViewController.m */,
+				A76A5E6F200E0C98001353BF /* WKVSJSViewController.h */,
+				A76A5E70200E0C98001353BF /* WKVSJSViewController.m */,
+				A7DEE7EC20747BAA00B6D71B /* WebViewJavascriptBridgeTest.h */,
+				A7DEE7ED20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m */,
+				A76A5E76200F5311001353BF /* CJHandlerVC.h */,
+				A76A5E77200F5311001353BF /* CJHandlerVC.m */,
+				A76A5E68200DE36B001353BF /* UseWebViewVC.h */,
+				A76A5E69200DE36B001353BF /* UseWebViewVC.m */,
 				A76A5E44200DA4D9001353BF /* Main.storyboard */,
 				A76A5E47200DA4D9001353BF /* Assets.xcassets */,
 				A76A5E49200DA4D9001353BF /* LaunchScreen.storyboard */,
@@ -69,6 +115,34 @@
 				A76A5E4D200DA4D9001353BF /* main.m */,
 			);
 			path = CJWebView;
+			sourceTree = "<group>";
+		};
+		A76A5E61200DDD20001353BF /* res */ = {
+			isa = PBXGroup;
+			children = (
+				A7DEE7EA2074772000B6D71B /* JavascriptBridge.html */,
+				A76A5E7920104DE5001353BF /* VideoTest.html */,
+				A76A5E74200EF1CB001353BF /* test.html */,
+				A76A5E66200DE33D001353BF /* 考勤.doc */,
+				A76A5E64200DE1B4001353BF /* 张小龙发布2018微信全新计划.txt */,
+				A76A5E62200DDE31001353BF /* 编写高质量iOS代码的52个有效方法.pdf */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		A7DEE7DD20746ED600B6D71B /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				A7DEE7E220746ED600B6D71B /* WebViewJavascriptBridgeBase.h */,
+				A7DEE7DE20746ED600B6D71B /* WebViewJavascriptBridgeBase.m */,
+				A7DEE7E520746ED600B6D71B /* WKWebViewJavascriptBridge.h */,
+				A7DEE7DF20746ED600B6D71B /* WKWebViewJavascriptBridge.m */,
+				A7DEE7E420746ED600B6D71B /* WebViewJavascriptBridge.h */,
+				A7DEE7E020746ED600B6D71B /* WebViewJavascriptBridge.m */,
+				A7DEE7E120746ED600B6D71B /* WebViewJavascriptBridge_JS.h */,
+				A7DEE7E320746ED600B6D71B /* WebViewJavascriptBridge_JS.m */,
+			);
+			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +203,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7DEE7EB2074772100B6D71B /* JavascriptBridge.html in Resources */,
+				A76A5E7A20104DE5001353BF /* VideoTest.html in Resources */,
 				A76A5E4B200DA4D9001353BF /* LaunchScreen.storyboard in Resources */,
+				A76A5E67200DE33D001353BF /* 考勤.doc in Resources */,
+				A76A5E65200DE1B4001353BF /* 张小龙发布2018微信全新计划.txt in Resources */,
+				A76A5E75200EF1CB001353BF /* test.html in Resources */,
 				A76A5E48200DA4D9001353BF /* Assets.xcassets in Resources */,
 				A76A5E46200DA4D9001353BF /* Main.storyboard in Resources */,
+				A76A5E63200DDE31001353BF /* 编写高质量iOS代码的52个有效方法.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,9 +222,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76A5E6A200DE36B001353BF /* UseWebViewVC.m in Sources */,
+				A7DEE7E820746ED600B6D71B /* WebViewJavascriptBridge.m in Sources */,
 				A76A5E43200DA4D9001353BF /* ViewController.m in Sources */,
 				A76A5E4E200DA4D9001353BF /* main.m in Sources */,
+				A7DEE7E920746ED600B6D71B /* WebViewJavascriptBridge_JS.m in Sources */,
 				A76A5E40200DA4D9001353BF /* AppDelegate.m in Sources */,
+				A7DEE7E620746ED600B6D71B /* WebViewJavascriptBridgeBase.m in Sources */,
+				A7DEE7E720746ED600B6D71B /* WKWebViewJavascriptBridge.m in Sources */,
+				A76A5E78200F5311001353BF /* CJHandlerVC.m in Sources */,
+				A76A5E71200E0C98001353BF /* WKVSJSViewController.m in Sources */,
+				A7DEE7EE20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +366,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H89E4B6ACW;
 				INFOPLIST_FILE = CJWebView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.jay.CJWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.cjtextview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -291,11 +384,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H89E4B6ACW;
 				INFOPLIST_FILE = CJWebView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiang.jay.CJWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.cjtextview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

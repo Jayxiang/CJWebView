@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport"content="width=320,maximum-scale=1.3,user-scalable=no">
+<title>WebViewJavascriptBridge</title>
+<script type="text/javascript">
+<!--  申明交互 固定代码-->
+  function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+  }
+<!--处理交互 方法名字一致-->
+  setupWebViewJavascriptBridge(function(bridge) {
+      bridge.registerHandler('testJSFunction', function(data, responseCallback) {
+          alert('JS方法被调用:'+data);
+          responseCallback('js执行过了');
+    })
+  })
+
+  function onAreaChooseResult(data){
+     
+  }
+  //地址选择返回
+  function chooseAddress(){
+      WebViewJavascriptBridge.callHandler('chooseAddress', {'address': '中国'}, function(response) {
+            alert('返回数据:' + response);
+        })
+  }
+  </script>
+</head>
+<body>
+</br>
+<input type="button" onclick="chooseAddress()" style="background-color: #00a5ff; border-radius: 0px;-webkit-appearance: none; color:white; border-radius: 5px;  border:none; width: 100px; height: 44px; font-size: 14px" value="选择地址">
+</br>
+</br>
+</body>
+</html>
