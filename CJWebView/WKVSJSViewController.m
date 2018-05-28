@@ -111,7 +111,9 @@
     web.UIDelegate = self;
     web.navigationDelegate = self;
 //    标识是否支持左、右swipe手势是否可以前进、后退默认NO
-    web.allowsBackForwardNavigationGestures = NO;
+//    web.allowsBackForwardNavigationGestures = YES;
+    //开启手势需要禁止系统手势
+//    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     //自定义UA
     web.customUserAgent = @"CJWebView/1.0.0";
     self.webView = web;
