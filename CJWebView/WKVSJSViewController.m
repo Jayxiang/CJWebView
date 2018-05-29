@@ -9,16 +9,17 @@
 #import "WKVSJSViewController.h"
 #import <WebKit/WebKit.h>
 #import "CJHandlerVC.h"
+#import "WKJSInterface.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define NavHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + 44)
-@interface WKVSJSViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UINavigationControllerDelegate,UIImagePickerControllerDelegate,WKURLSchemeHandler,WKDelegate>
+@interface WKVSJSViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UINavigationControllerDelegate,UIImagePickerControllerDelegate,WKURLSchemeHandler,WKJSInterfaceDelegate>
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) WKUserContentController *userContentController;
 @property (nonatomic, strong) UIProgressView *progressView;
 @property (nullable, copy) NSArray<NSHTTPCookie *> *cookies;
-
+@property (nonatomic, strong) WKJSInterface *interface;
 @end
 
 @implementation WKVSJSViewController
@@ -31,7 +32,22 @@
     [self initWebView];
     self.title = self.webView.title;
 }
-
+- (WKJSInterface *)interface {
+    if (!_interface) {
+        //    这样写为了避免内存泄漏,利用WKScriptMessageHandler写到另一个类.而且方便管理
+        _interface = [[WKJSInterface alloc] initWithDelegate:self];
+    }
+    return _interface;
+}
+- (WKWebView *)interfaceWebview {
+    if (self.webView) {
+        return self.webView;
+    }
+    return nil;
+}
+- (UIViewController *)interfaceController {
+    return self;
+}
 - (void)initWebView {
     if (@available(iOS 11.0, *)) {
         self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -42,14 +58,12 @@
     
     //偏好设置
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-//    这样写为了避免内存泄漏另外也可以在界面消失时删除监听方法
-    CJHandlerVC *handler = [[CJHandlerVC alloc] init];
-    handler.delegate = self;
     
 //    内容交互控制器
     WKUserContentController *user = [WKUserContentController new];
-    [user addScriptMessageHandler:handler name:@"takeUserImage"];
-    [user addScriptMessageHandler:handler name:@"getDicDataByType"];
+    [self.interface.allInterface enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [user addScriptMessageHandler:self.interface name:obj];
+    }];
     self.userContentController = user;
 
     //    给h5设置cookie
@@ -58,8 +72,9 @@
     
 //    iOS11后设置cookie
     if (@available(iOS 11.0, *)) {
-//        这个特性允许你提供自定义的资源，这也可以实现离线缓存。例如你把所有的图片都放到app里面，然后网页加载图片时按照特定的scheme（比如：wk-app://name）来加载，然后在客户端代码中使用特定的SchemeHandler来解析即可。
-        [configuration setURLSchemeHandler:self forURLScheme:@"wk-app"];
+//        这个特性允许你提供自定义的资源，这也可以实现离线缓存。例如你把所有的图片都放到app里面，然后网页加载图片时按照特定的scheme（比如：wk-app://name）来加载，然后在客户端代码中使用特定的SchemeHandler来解析即可。此处也要注意内存泄漏
+        
+        [configuration setURLSchemeHandler:[[WeakWKURLSchemeHandler alloc] initWithDelegate:self]  forURLScheme:@"wk-app"];
 //
         NSMutableDictionary *fromappDict = [NSMutableDictionary dictionary];
         [fromappDict setObject:@"hq_http_usertoken" forKey:NSHTTPCookieName];
@@ -145,11 +160,14 @@
 - (void)clearWebViewCache {
     // 这里的 iOS9Later 包含iOS 9
     if (@available(iOS 9.0, *)) {
-        //所有缓存
-//        NSSet *types = [WKWebsiteDataStore allWebsiteDataTypes];
-        NSSet *type = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache]];
-        NSDate *date = [NSDate date];
-        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:type modifiedSince:date completionHandler:^{}];
+        //尽量在主线程操作
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //所有缓存
+            //        NSSet *types = [WKWebsiteDataStore allWebsiteDataTypes];
+            NSSet *type = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache]];
+            NSDate *date = [NSDate date];
+            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:type modifiedSince:date completionHandler:^{}];
+        });
     } else {
         NSString *libPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject;
         NSString *cookiePath = [libPath stringByAppendingString:@"/Cookies"];
@@ -189,7 +207,7 @@
     [imageData writeToFile:imageFile atomically:YES];
     NSData *imageData1 = [NSData dataWithContentsOfFile:imagePath];//imagePath :沙盒图片路径
     NSString *imageSource = [NSString stringWithFormat:@"data:image/jpg;base64,%@",[imageData1 base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]];
-    //直接传字典 js不能解析
+    //直接传字典 js不能解析,可以将字典转为data再转为json
     NSString *jsStr1 = [NSString stringWithFormat:@"HQAppUploadResult({\"url\":\"%@\",\"local\":\"%@\"})",url,imageSource];
 #else
     //当图片放到doc下在真机下并不能加载,而放到tmp下则可以
@@ -411,16 +429,17 @@
 }
 - (void)dealloc {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    [self.userContentController removeScriptMessageHandlerForName:@"getDicDataByType"];
-    [self.userContentController removeScriptMessageHandlerForName:@"takeUserImage"];
-    NSLog(@"网页被释放");
+    [self.interface.allInterface enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.userContentController removeScriptMessageHandlerForName:obj];
+    }];
+    NSLog(@"%s",__func__);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 //开始加载特定资源时调用
-- (void)webView:(nonnull WKWebView *)webView startURLSchemeTask:(nonnull id<WKURLSchemeTask>)urlSchemeTask {
+- (void)webView:(nonnull WKWebView *)webView startURLSchemeTask:(nonnull id<WKURLSchemeTask>)urlSchemeTask  API_AVAILABLE(ios(11.0)){
     NSString *str = urlSchemeTask.request.URL.absoluteString;
     UIImage *image = [UIImage imageNamed:[self getImageName:str]];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
@@ -437,7 +456,7 @@
     return nil;
 }
 //停止载特定资源时调用
-- (void)webView:(nonnull WKWebView *)webView stopURLSchemeTask:(nonnull id<WKURLSchemeTask>)urlSchemeTask {
+- (void)webView:(nonnull WKWebView *)webView stopURLSchemeTask:(nonnull id<WKURLSchemeTask>)urlSchemeTask  API_AVAILABLE(ios(11.0)){
     urlSchemeTask = nil;
 }
 

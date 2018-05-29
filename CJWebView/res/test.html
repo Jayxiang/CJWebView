@@ -9,10 +9,12 @@
       alert(typedata);
   }
 
-   function takeimage(){
+  function takeimage(){
 	  window.webkit.messageHandlers.takeUserImage.postMessage(null);
   }
-
+  function del(){
+      window.webkit.messageHandlers.getDicDataByType.postMessage("字典");
+  }
  //地址选择返回
   function onAreaChooseResult(data){
 	  alert(data);

@@ -82,7 +82,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)dealloc {
+    NSLog(@"网页被释放");
+}
 /*
 #pragma mark - Navigation
 

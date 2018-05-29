@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A764DF6420BBE7BA000763AB /* WKJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A764DF6320BBE7BA000763AB /* WKJSInterface.m */; };
 		A76A5E40200DA4D9001353BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E3F200DA4D9001353BF /* AppDelegate.m */; };
 		A76A5E43200DA4D9001353BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A76A5E42200DA4D9001353BF /* ViewController.m */; };
 		A76A5E46200DA4D9001353BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76A5E44200DA4D9001353BF /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A764DF6220BBE7BA000763AB /* WKJSInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKJSInterface.h; sourceTree = "<group>"; };
+		A764DF6320BBE7BA000763AB /* WKJSInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKJSInterface.m; sourceTree = "<group>"; };
 		A76A5E3B200DA4D9001353BF /* CJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76A5E3E200DA4D9001353BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A76A5E3F200DA4D9001353BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				A76A5E42200DA4D9001353BF /* ViewController.m */,
 				A76A5E6F200E0C98001353BF /* WKVSJSViewController.h */,
 				A76A5E70200E0C98001353BF /* WKVSJSViewController.m */,
+				A764DF6220BBE7BA000763AB /* WKJSInterface.h */,
+				A764DF6320BBE7BA000763AB /* WKJSInterface.m */,
 				A7DEE7EC20747BAA00B6D71B /* WebViewJavascriptBridgeTest.h */,
 				A7DEE7ED20747BAA00B6D71B /* WebViewJavascriptBridgeTest.m */,
 				A76A5E76200F5311001353BF /* CJHandlerVC.h */,
@@ -171,7 +176,7 @@
 		A76A5E33200DA4D9001353BF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "hyd-cjx";
 				TargetAttributes = {
 					A76A5E3A200DA4D9001353BF = {
@@ -228,6 +233,7 @@
 				A76A5E4E200DA4D9001353BF /* main.m in Sources */,
 				A7DEE7E920746ED600B6D71B /* WebViewJavascriptBridge_JS.m in Sources */,
 				A76A5E40200DA4D9001353BF /* AppDelegate.m in Sources */,
+				A764DF6420BBE7BA000763AB /* WKJSInterface.m in Sources */,
 				A7DEE7E620746ED600B6D71B /* WebViewJavascriptBridgeBase.m in Sources */,
 				A7DEE7E720746ED600B6D71B /* WKWebViewJavascriptBridge.m in Sources */,
 				A76A5E78200F5311001353BF /* CJHandlerVC.m in Sources */,
@@ -272,6 +278,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -279,6 +286,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -327,6 +335,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -334,6 +343,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
