@@ -32,12 +32,14 @@
     UIImage *image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
     
     NSString *url = [NSString stringWithFormat:@"http://pic.58pic.com/58pic/16/62/63/97m58PICyWM_1024.jpg"];
+    
 #if 0
     NSString *patchDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFile = [NSString stringWithFormat:@"%@/Images", patchDocument];
     NSString *documentsDirectory = [NSString stringWithFormat:@"%@/", imageFile];
     NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:@"image.jpg"];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.25);
+    //也可以不放入沙盒直接转为base64传给前端
     [imageData writeToFile:imageFile atomically:YES];
     NSData *imageData1 = [NSData dataWithContentsOfFile:imagePath];//imagePath :沙盒图片路径
     NSString *imageSource = [NSString stringWithFormat:@"data:image/jpg;base64,%@",[imageData1 base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]];
