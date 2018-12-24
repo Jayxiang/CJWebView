@@ -36,13 +36,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CJWebView/WKVSJSViewController.m"
-            timestampString = "559985224.748706"
+            timestampString = "565065470.8274111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-initWebView"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WKVSJSViewController webView:didFinishNavigation:]"
+                  moduleName = "CJWebView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tet-cjx/Desktop/CJWebView/CJWebView/WKVSJSViewController.m"
+                  timestampString = "565065471.26827"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "313"
+                  endingLineNumber = "313"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[WKVSJSViewController webView:didFinishNavigation:]_block_invoke_2"
+                  moduleName = "CJWebView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tet-cjx/Desktop/CJWebView/CJWebView/WKVSJSViewController.m"
+                  timestampString = "565065471.270461"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -52,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CJWebView/WKVSJSViewController.m"
-            timestampString = "559985224.749069"
+            timestampString = "565065470.827861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "-webView:didFinishNavigation:"
             landmarkType = "7">
          </BreakpointContent>

@@ -14,12 +14,15 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define NavHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + 44)
+
 @interface WKVSJSViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UINavigationControllerDelegate,UIImagePickerControllerDelegate,WKURLSchemeHandler,WKJSInterfaceDelegate>
+
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) WKUserContentController *userContentController;
 @property (nonatomic, strong) UIProgressView *progressView;
 @property (nullable, copy) NSArray<NSHTTPCookie *> *cookies;
 @property (nonatomic, strong) WKJSInterface *interface;
+
 @end
 
 @implementation WKVSJSViewController
@@ -58,7 +61,10 @@
     
     //偏好设置
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-    
+//    cookie 非持久存储
+    WKWebsiteDataStore *cookieStore = [WKWebsiteDataStore nonPersistentDataStore];
+    configuration.websiteDataStore = cookieStore;
+
 //    内容交互控制器
     WKUserContentController *user = [WKUserContentController new];
     [self.interface.allInterface enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -67,7 +73,7 @@
     self.userContentController = user;
 
     //    给h5设置cookie
-    WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource: @"document.cookie='hq_http_usertoken=GojvvmpfnXXAQ6/HxBfMIQFJhWXOBYQfzhWCHpRABtI=;domain=hq-app-dev.zhongan.io;path=/'; "injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+    WKUserScript *cookieScript = [[WKUserScript alloc] initWithSource: @"document.cookie='hq_http_usertoken=gEqAqLsiFoIPLmXuZj2z6jalcVY3zPcOa5i9Okx6Duw=;domain=shlife-app-test.zaouter.com;path=/'; "injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
     [user addUserScript:cookieScript];
     
 //    iOS11后设置cookie
@@ -78,9 +84,10 @@
 //
         NSMutableDictionary *fromappDict = [NSMutableDictionary dictionary];
         [fromappDict setObject:@"hq_http_usertoken" forKey:NSHTTPCookieName];
-        [fromappDict setObject:@"GojvvmpfnXXAQ6/HxBfMIQFJhWXOBYQfzhWCHpRABtI=" forKey:NSHTTPCookieValue];
-        [fromappDict setObject:@"hq-app-dev.zhongan.io" forKey:NSHTTPCookieDomain];
-        [fromappDict setObject:@"https://hq-app-dev.zhongan.io" forKey:NSHTTPCookieOriginURL];
+        [fromappDict setObject:@"F1ZzvjUm84EwRWkWA8f4jQo0Dbhcia+erpNrcHYNW74=" forKey:NSHTTPCookieValue];
+        
+        [fromappDict setObject:@"shlife-app-test.zaouter.com" forKey:NSHTTPCookieDomain];
+        [fromappDict setObject:@"http://shlife-app-test.zaouter.com" forKey:NSHTTPCookieOriginURL];
         [fromappDict setObject:@"/" forKey:NSHTTPCookiePath];
         [fromappDict setObject:@"0" forKey:NSHTTPCookieVersion];
         NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:fromappDict];
@@ -116,7 +123,7 @@
 #if 1
     NSURL *url = [[NSBundle mainBundle] URLForResource:_name withExtension:@"html"];
 #else
-    NSURL *url = [NSURL URLWithString:@"https://hq-app-dev.zhongan.io/web/busscard"];
+    NSURL *url = [NSURL URLWithString:@"https://sinowel-ishare-dev.zaouter.com/index/main/index"];
 #endif
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     //给请求头增加cookie
@@ -164,8 +171,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //所有缓存
             //        NSSet *types = [WKWebsiteDataStore allWebsiteDataTypes];
+            //选择
             NSSet *type = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache]];
-            NSDate *date = [NSDate date];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
             [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:type modifiedSince:date completionHandler:^{}];
         });
     } else {
@@ -287,6 +295,7 @@
 // 当main frame接收到服务重定向时，会回调此方法或接收到服务器跳转请求之后调用
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"开始接收请求");
+    
 }
 
 // 当main frame开始加载数据失败时，会回调
@@ -303,16 +312,18 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"加载完成");
     
-    [webView evaluateJavaScript:@"document.cookie = 'hq_http_usertoken=GojvvmpfnXXAQ6/HxBfMIQFJhWXOBYQfzhWCHpRABtI=;domain=hq-app-dev.zhongan.io;path=/'" completionHandler:^(id result, NSError *error) {
+    [webView evaluateJavaScript:@"document.cookie = 'hq_http_usertoken=gEqAqLsiFoIPLmXuZj2z6jalcVY3zPcOa5i9Okx6Duw=;domain=shlife-app-test.zaouter.com;path=/'" completionHandler:^(id result, NSError *error) {
         NSLog(@"%@%@",result,error);
     }];
-    
     self.title = webView.title;
     if (@available(iOS 11.0, *)) {
         [webView.configuration.websiteDataStore.httpCookieStore getAllCookies:^(NSArray<NSHTTPCookie *> * _Nonnull cookies) {
             NSLog(@"%@",cookies);
         }];
     } else {
+        [webView evaluateJavaScript:@"document.cookie" completionHandler:^(id result, NSError *error) {
+            NSLog(@"%@%@",result,error);
+        }];
         // Fallback on earlier versions
     }
 }
