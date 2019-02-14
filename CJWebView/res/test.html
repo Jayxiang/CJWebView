@@ -4,16 +4,22 @@
 <meta name="viewport"content="width=320,maximum-scale=1.3,user-scalable=no">
 <title>wkwebview</title>
 <script type="text/javascript">
+    
+<!--    var console = {};-->
+<!--    console.log = function(message){window.webkit.messageHandlers['logger'].postMessage(message)-->
+<!--    };-->
+
     function backtext(){
 	  typedata = window.webkit.messageHandlers.HQAppJSInterface.setActionBarBackItemText('上一步');
       alert(typedata);
-  }
+    }
 
   function takeimage(){
 	  window.webkit.messageHandlers.takeUserImage.postMessage(null);
   }
   function del(){
       window.webkit.messageHandlers.getDicDataByType.postMessage("字典");
+      console.log('打印H5')
   }
  //地址选择返回
   function onAreaChooseResult(data){

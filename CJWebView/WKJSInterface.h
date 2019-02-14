@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
+#import "WKJSFunction.h"
 
 @protocol WKJSInterfaceDelegate <NSObject>
 
@@ -23,6 +24,8 @@
 @property (nonatomic, weak) id<WKJSInterfaceDelegate> delegate;
 
 @property (nonatomic, copy) NSArray *allInterface;
+
++ (NSArray<NSString *> *)methodListWithProtocol:(Protocol *)protocol;
 
 @end
 

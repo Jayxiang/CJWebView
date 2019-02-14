@@ -7,6 +7,7 @@
 //
 
 #import "WKJSInterface.h"
+#import <objc/message.h>
 @interface WKJSInterface()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end
@@ -72,17 +73,33 @@
 }
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:@"logging"]) {
+        NSLog(@"H5 log: %@", message.body);
+        return;
+    }
     NSString *selName = [NSString stringWithFormat:@"%@:", message.name];
     SEL sel = NSSelectorFromString(selName);
     if ([self respondsToSelector:sel]) {
         [self performSelector:sel withObject:message.body afterDelay:0];
     }
+    
 }
 - (NSArray *)allInterface {
     if (!_allInterface) {
         _allInterface = @[@"takeUserImage",@"getDicDataByType"];
     }
     return _allInterface;
+}
++ (NSArray<NSString *> *)methodListWithProtocol:(Protocol *)protocol {
+    unsigned int count = 0;
+    NSMutableArray<NSString *> *methodList = @[].mutableCopy;
+    struct objc_method_description *methods = protocol_copyMethodDescriptionList(protocol, YES, YES, &count);
+    for (unsigned int i = 0; i < count; i++) {
+        struct objc_method_description method = methods[i];
+        NSString *name = NSStringFromSelector(method.name);
+        [methodList addObject:name];
+    }
+    return methodList;
 }
 - (void)dealloc {
     NSLog(@"%s",__func__);

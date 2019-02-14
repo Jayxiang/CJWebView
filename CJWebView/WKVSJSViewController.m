@@ -67,9 +67,13 @@
 
 //    内容交互控制器
     WKUserContentController *user = [WKUserContentController new];
-    [self.interface.allInterface enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [[WKJSInterface methodListWithProtocol:@protocol(WKJSFunction)] enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj = [obj stringByReplacingOccurrencesOfString:@":" withString:@""];
         [user addScriptMessageHandler:self.interface name:obj];
     }];
+    
+    [user addScriptMessageHandler:self.interface name:@"logging"];
+    
     self.userContentController = user;
 
     //    给h5设置cookie
@@ -116,7 +120,7 @@
     } else {
         // Fallback on earlier versions
     }
-    
+    //如果过个webview需要共享cookie 需要设置如下
     configuration.processPool = [[WKProcessPool alloc] init];
     
     WKWebView *web = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavHeight, kScreenWidth, kScreenHeight - NavHeight) configuration:configuration];
@@ -150,6 +154,7 @@
     UIBarButtonItem *goNext = [[UIBarButtonItem alloc] initWithTitle:@"前进" style:UIBarButtonItemStyleDone target:self action:@selector(goFarward)];
     UIBarButtonItem *goBack = [[UIBarButtonItem alloc] initWithTitle:@"后退" style:UIBarButtonItemStyleDone target:self action:@selector(goBack)];
     self.navigationItem.rightBarButtonItems = @[goBack,goNext];
+    
 }
 
 - (void)goBack{
@@ -312,6 +317,13 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"加载完成");
     
+    if (DEBUG) {
+        NSString * js = @"var console = {};console.log = function(message){window.webkit.messageHandlers.logging.postMessage(message)};";
+        [self.webView evaluateJavaScript:js completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+            NSLog(@"%@----%@",result, error);
+        }];
+    }
+    
     [webView evaluateJavaScript:@"document.cookie = 'hq_http_usertoken=gEqAqLsiFoIPLmXuZj2z6jalcVY3zPcOa5i9Okx6Duw=;domain=shlife-app-test.zaouter.com;path=/'" completionHandler:^(id result, NSError *error) {
         NSLog(@"%@%@",result,error);
     }];
@@ -440,8 +452,10 @@
 }
 - (void)dealloc {
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    [self.interface.allInterface enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self.userContentController removeScriptMessageHandlerForName:obj];
+
+    [[WKJSInterface methodListWithProtocol:@protocol(WKJSFunction)] enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj = [obj stringByReplacingOccurrencesOfString:@":" withString:@""];
+        [self.webView.configuration.userContentController removeScriptMessageHandlerForName:obj];
     }];
     NSLog(@"%s",__func__);
 }
