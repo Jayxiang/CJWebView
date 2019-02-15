@@ -131,7 +131,7 @@
 #endif
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     //给请求头增加cookie
-//    [request setValue:@"hq_http_usertoken=GojvvmpfnXXAQ6/HxBfMIQFJhWXOBYQfzhWCHpRABtI=;domain=hq-app-dev.zhongan.io" forHTTPHeaderField:@"Cookie"];
+//    [request setValue:@"hq_http_usertoken=GojvvmpfnXXAQ6/HxBfMIQFJhWXOBYQfzhWCHpRABtI=;domain=hq-app-dev.test.io" forHTTPHeaderField:@"Cookie"];
     [web loadRequest:request];
 //    [web loadFileURL:url allowingReadAccessToURL:url];
     web.UIDelegate = self;
