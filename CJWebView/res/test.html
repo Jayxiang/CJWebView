@@ -42,6 +42,15 @@
     var imgLocal = document.getElementById("imgLocal");
     imgLocal.src = data.local;
   }
+//file获取
+  function changepic() {
+    var reads= new FileReader();
+    f=document.getElementById('file').files[0];
+    reads.readAsDataURL(f);
+    reads.onload=function (e) {
+        document.getElementById('imgLocal').src=this.result;
+    };
+  }
 
   function harish(){
 	  alert('address');
@@ -60,6 +69,10 @@
     </br>
     </br>
 <input type="button" onclick="takeimage()" style="background-color: #00a5ff; border-radius: 0px;-webkit-appearance: none; color:white; border-radius: 5px;  border:none; width: 100px; height: 44px; font-size: 14px"  value="选择照片">
+    </br>
+    </br>
+<input type="file" onchange="changepic()" id='file' accept="image/png, image/jpeg, image/gif, image/jpg" style="background-color: #00a5ff; border-radius: 0px;-webkit-appearance: none; color:white; border-radius: 5px;  border:none; width: 100px; height: 44px; font-size: 14px;" />
+
 </br>
 </br>
 <font  face="黑体" color="blue">在线图片 本地图片</font>

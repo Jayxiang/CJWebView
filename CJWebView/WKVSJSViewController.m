@@ -316,6 +316,9 @@
 // 当main frame导航完成时，会回调
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"加载完成");
+    //禁止长按复制
+    [webView evaluateJavaScript:@"document.documentElement.style.webkitUserSelect='none';" completionHandler:nil];
+    [webView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:nil];
     
     if (DEBUG) {
         NSString * js = @"var console = {};console.log = function(message){window.webkit.messageHandlers.logging.postMessage(message)};";
